@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-      <CssBaseline />
-  <Component {...pageProps} />
-  </ThemeProvider>
-  </React.Fragment>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </React.Fragment>
   );
 }
 App.propTypes = {

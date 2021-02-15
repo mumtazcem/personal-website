@@ -4,18 +4,11 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'pages/posts')
-const allowedPostExtension = ".md"
+const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
-  // Only keep files with .md extensions
-  fileNames.forEach(function (fileName, index) {
-    if (!fileName.includes(allowedPostExtension)){
-      fileNames.splice(index, 1)
-    }
-});
 
   const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
