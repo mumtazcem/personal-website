@@ -1,1 +1,2 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# personal-website
+My first attempt to create my own website, it should be fun.
