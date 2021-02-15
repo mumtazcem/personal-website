@@ -5,10 +5,18 @@ import remark from 'remark'
 import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'pages/posts')
+const allowedPostExtension = ".md"
 
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
+  // Only keep files with .md extensions
+  fileNames.forEach(function (fileName, index) {
+    if (!fileName.includes(allowedPostExtension)){
+      fileNames.splice(index, 1)
+    }
+});
+
   const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '')
@@ -23,7 +31,7 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data
+      ...(matterResult.data as { date: string; title: string })
     }
   })
   // Sort posts by date
