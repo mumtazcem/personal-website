@@ -3,9 +3,11 @@ import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import MiniDrawer from './drawer'
+import Footer from './footer'
 
-const name = 'M. Cem Eriş'
-export const siteTitle = 'Cem\'s Website'
+const name = 'Mümtaz Cem Eriş'
+export const siteTitle = 'M. Cem Eriş'
 
 export default function Layout({
   children,
@@ -20,7 +22,7 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Personal website of me created via Next.js"
         />
         <meta
           property="og:image"
@@ -30,7 +32,9 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+
       </Head>
+
       <header className={styles.header}>
         {home ? (
           <>
@@ -45,27 +49,29 @@ export default function Layout({
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
+            <>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a>
+                  <Image
+                    priority
+                    src="/images/profile.jpg"
+                    className={utilStyles.borderCircle}
+                    height={108}
+                    width={108}
+                    alt={name}
+                  />
+                </a>
               </Link>
-            </h2>
-          </>
-        )}
+              <h2 className={utilStyles.headingLg}>
+                <Link href="/">
+                  <a className={utilStyles.colorInherit}>{name}</a>
+                </Link>
+              </h2>
+            </>
+          )}
       </header>
+
+      <MiniDrawer />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
@@ -74,6 +80,8 @@ export default function Layout({
           </Link>
         </div>
       )}
+
+    <Footer />
     </div>
   )
 }
