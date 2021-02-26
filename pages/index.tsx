@@ -8,6 +8,7 @@ import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
@@ -46,7 +47,7 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <Grid container direction="column" spacing={1} alignItems="center" >
         <Typography paragraph>
           This is <b>Cem</b>. I'm a ballroom dancer, a software developer, and a researcher.
         </Typography>
@@ -55,9 +56,9 @@ export default function Home({
           <a href="https://nextjs.org/learn"> Next.js </a>
           you should definitely check it out!
           </Typography>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      </Grid>
+      <Grid container direction="column" spacing={1} alignItems="center" >
+      <Typography paragraph>Blog</Typography>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
@@ -71,7 +72,7 @@ export default function Home({
             </li>
           ))}
         </ul>
-      </section>
+      </Grid>
     </Layout>
   )
 }

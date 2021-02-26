@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import DescriptionIcon from '@material-ui/icons/Description';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const drawerWidth = 240;
 
@@ -22,21 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
     },
     menuButton: {
       marginRight: theme.spacing(-2),
@@ -82,11 +69,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function MiniDrawer()  {
+export default function MiniDrawer({
+    children
+  }: {
+    children: React.ReactNode
+  })  {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -96,8 +87,8 @@ export default function MiniDrawer()  {
   };
 
   return (
-    <div className={classes.root}>
-      
+    <Container className={classes.root}>
+      <CssBaseline />
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -179,6 +170,7 @@ export default function MiniDrawer()  {
             </ListItem>
         </List>
       </Drawer>
-    </div>
+      <main className={classes.content}>{children}</main>
+    </Container>
   );
 }

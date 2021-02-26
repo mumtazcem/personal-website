@@ -1,13 +1,44 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Link from '@material-ui/core/Link';
 import MiniDrawer from './drawer'
 import Footer from './footer'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Container from '@material-ui/core/Container';
 
 const name = 'Mümtaz Cem Eriş'
 export const siteTitle = 'M. Cem Eriş'
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    footer: {
+      ...theme.typography.body2,
+      // marginTop: theme.spacing(8),
+      padding: theme.spacing(3, 0),
+    },
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 300,
+    },
+    small: {
+      width: theme.spacing(15),
+      height: theme.spacing(15),
+      alignContent: 'center'
+    },
+    large: {
+      width: theme.spacing(30),
+      height: theme.spacing(30),
+      alignContent: 'center'
+    }
+  }),
+);
+
 
 export default function Layout({
   children,
@@ -16,8 +47,9 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+  const classes = useStyles();
   return (
-    <div className={styles.container}>
+    <Container fixed>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -34,54 +66,36 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
 
       </Head>
-
-      <header className={styles.header}>
+      <MiniDrawer>
         {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
+          <Grid container direction="column" spacing={1} alignItems="center">
+            <div>
+              <Avatar
+                alt={name}
+                src="/images/profile_big.jpg"
+                className={classes.large}
+                title="Halo"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                {name}
+              </Typography>
+            </div>
+          </Grid>
         ) : (
-            <>
-              <Link href="/">
-                <a>
-                  <Image
-                    priority
-                    src="/images/profile.jpg"
-                    className={utilStyles.borderCircle}
-                    height={108}
-                    width={108}
-                    alt={name}
-                  />
-                </a>
-              </Link>
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>{name}</a>
-                </Link>
-              </h2>
-            </>
+            <div></div>
           )}
-      </header>
 
-      <MiniDrawer />
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-
-    <Footer />
-    </div>
+        <main>{children}</main>
+        {!home && (
+          <div className={styles.backToHome}>
+            <Link href="/">
+              <a>← Back to home</a>
+            </Link>
+          <Footer otherPages/>
+          </div>
+        )}
+        <Footer />
+      </MiniDrawer>
+    </Container>
   )
 }

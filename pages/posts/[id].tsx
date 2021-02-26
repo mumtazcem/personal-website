@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -36,13 +38,13 @@ export default function Post({
         <Head>
           <title>{postData.title}</title>
         </Head>
-        <article>
-          <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-          <div className={utilStyles.lightText}>
+        <Container fixed>
+        <Typography gutterBottom variant="h5" component="h2">{postData.title}</Typography>
+        <Typography paragraph>
             <Date dateString={postData.date} />
-          </div>
+            </Typography>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </article>
+        </Container>
       </Layout>
     )
   }
