@@ -1,4 +1,3 @@
-import '../styles/global.css'
 import { AppProps } from 'next/app'
 import React from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
