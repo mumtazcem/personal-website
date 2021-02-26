@@ -2,7 +2,6 @@ import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -34,17 +33,17 @@ export default function Post({
   }
 }) {
   return (
-      <Layout>
-        <Head>
-          <title>{postData.title}</title>
-        </Head>
-        <Container fixed>
+    <Layout>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+      <Container fixed>
         <Typography gutterBottom variant="h5" component="h2">{postData.title}</Typography>
         <Typography paragraph>
-            <Date dateString={postData.date} />
-            </Typography>
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </Container>
-      </Layout>
-    )
-  }
+          <Date dateString={postData.date} />
+        </Typography>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </Container>
+    </Layout>
+  )
+}

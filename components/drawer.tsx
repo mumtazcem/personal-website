@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      background: theme.palette.background.default
     },
     menuButton: {
       marginRight: theme.spacing(-2),
@@ -61,10 +62,12 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,
+      background: theme.palette.primary.main
     },
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
+      background: theme.palette.background.default
     },
   }),
 );

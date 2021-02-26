@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
 import Link from '@material-ui/core/Link';
 import MiniDrawer from './drawer'
 import Footer from './footer'
@@ -8,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const name = 'Mümtaz Cem Eriş'
 export const siteTitle = 'M. Cem Eriş'
@@ -35,7 +35,10 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(30),
       height: theme.spacing(30),
       alignContent: 'center'
-    }
+    },
+    backToHome: {
+      margin: theme.spacing(3, 0, 0)
+    },
   }),
 );
 
@@ -87,14 +90,16 @@ export default function Layout({
 
         <main>{children}</main>
         {!home && (
-          <div className={styles.backToHome}>
+          <div className={classes.backToHome}>
             <Link href="/">
-              <a>← Back to home</a>
+              ← Back to home
             </Link>
           <Footer otherPages/>
           </div>
         )}
+        {home && (
         <Footer />
+        )}
       </MiniDrawer>
     </Container>
   )

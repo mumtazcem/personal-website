@@ -1,14 +1,18 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
+import Link from '@material-ui/core/Link';
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
@@ -19,18 +23,26 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
   root: {
-    margin: theme.spacing(6, 0, 3),
+    margin: theme.spacing(0, 0, 0),
   },
-  lightBulb: {
-    verticalAlign: 'middle',
-    marginRight: theme.spacing(1),
+  list: {
+    padding: 0,
+    margin: 0,
   },
-  bottomNav: {
-    width: 500,
+  listItem: {
+    margin: theme.spacing(0, 0, 1),
   },
-}));
+  primaryText: {
+    color: 'textPrimary',
+  },
+  secondaryText: {
+    color: "#666",
+  },
+}),
+);
 
 export default function Home({
   allPostsData
@@ -42,12 +54,14 @@ export default function Home({
   }[]
 }) {
 
+  const [open, setOpen] = React.useState(true);
+  const classes = useStyles();
   return (
-    <Layout home>
+    <Layout home >
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Grid container direction="column" spacing={1} alignItems="center" >
+      <Grid container direction="column" spacing={1} alignItems="center" className={classes.root}>
         <Typography paragraph>
           This is <b>Cem</b>. I'm a ballroom dancer, a software developer, and a researcher.
         </Typography>
@@ -57,21 +71,30 @@ export default function Home({
           you should definitely check it out!
           </Typography>
       </Grid>
-      <Grid container direction="column" spacing={1} alignItems="center" >
-      <Typography paragraph>Blog</Typography>
-        <ul className={utilStyles.list}>
+      <Grid container direction="column" spacing={1} alignItems="center" className={classes.root}>
+        <Typography gutterBottom variant="h5" component="h2" align="left">Blog</Typography>
+        <List className={classes.list}>
           {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
+            <ListItem className={classes.listItem} key={id}>
+              <ListItemIcon>
+                <MenuBookIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Link href={`/posts/${id}`} >
+                    {title}
+                  </Link>
+                }
+                secondary={
+                  <Typography className={classes.secondaryText}>
+                    <Date dateString={date} />
+                  </Typography>
+                }
+              />
+
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </Grid>
     </Layout>
   )
