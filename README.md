@@ -2,7 +2,7 @@
 My first attempt to create my own website, it should be fun.
 
 With:
-* Next.js
+* Next.js (using typescript)
 * Material UI
 * React Framework
 
