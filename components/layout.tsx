@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 
 const name = 'Mümtaz Cem Eriş'
 export const siteTitle = 'M. Cem Eriş'

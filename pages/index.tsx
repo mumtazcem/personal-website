@@ -35,12 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
   listItem: {
     margin: theme.spacing(0, 0, 1),
   },
-  primaryText: {
-    color: 'textPrimary',
-  },
-  secondaryText: {
-    color: "#666",
-  },
 }),
 );
 
@@ -86,7 +80,7 @@ export default function Home({
                   </Link>
                 }
                 secondary={
-                  <Typography className={classes.secondaryText}>
+                  <Typography>
                     <Date dateString={date} />
                   </Typography>
                 }
