@@ -75,7 +75,7 @@ export default function Home({
               </ListItemIcon>
               <ListItemText
                 primary={
-                  <Link href={`/posts/${id}`} >
+                  <Link href={`./posts/${id}`} >
                     {title}
                   </Link>
                 }

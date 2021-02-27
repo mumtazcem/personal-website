@@ -53,7 +53,7 @@ export default function Layout({
   return (
     <Container fixed>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../favicon.ico" />
         <meta
           name="description"
           content="Personal website of me created via Next.js"
@@ -74,7 +74,7 @@ export default function Layout({
             <div>
               <Avatar
                 alt={name}
-                src="/images/profile_big.jpg"
+                src="../images/profile_big.jpg"
                 className={classes.large}
                 title="Halo"
               />
@@ -90,7 +90,7 @@ export default function Layout({
         <main>{children}</main>
         {!home && (
           <div className={classes.backToHome}>
-            <Link href="/">
+            <Link href="../">
               ← Back to home
             </Link>
           <Footer otherPages/>

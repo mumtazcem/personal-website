@@ -64,7 +64,7 @@ export default function Footer({
                     <Link href="/">
                         <Avatar
                             alt={title}
-                            src="/images/dance_img.jpg"
+                            src="../images/dance_img.jpg"
                             className={classes.small}
                             title="Halo"
                         />
