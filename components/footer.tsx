@@ -25,6 +25,11 @@ function Copyright() {
                 {'/'}
                 {new Date().getFullYear()}
             </Typography>
+            <Typography paragraph variant="body2" color="textSecondary" align="center">
+                This site is developed with {' '}
+                <a href="https://nextjs.org/learn"> Next.js </a>
+          you should definitely check it out!
+          </Typography>
         </div>
     );
 }
@@ -60,19 +65,19 @@ export default function Footer({
         <footer className={classes.footer}>
             <Container maxWidth="lg">
                 {otherPages ? (
-                <Grid container direction="column" spacing={1} alignItems="center" >
-                    <Link href="/">
-                        <Avatar
-                            alt={title}
-                            src="../images/dance_img.jpg"
-                            className={classes.small}
-                            title="Halo"
-                        />
-                    </Link>
-                </Grid>
+                    <Grid container direction="column" spacing={1} alignItems="center" >
+                        <Link href="/">
+                            <Avatar
+                                alt={title}
+                                src="../images/dance_img.jpg"
+                                className={classes.small}
+                                title="Dance!"
+                            />
+                        </Link>
+                    </Grid>
                 ) : (
-                    <div></div>
-                  )}
+                        <div></div>
+                    )}
                 <Typography variant="h6" align="center" gutterBottom>
                     {title}
                 </Typography>

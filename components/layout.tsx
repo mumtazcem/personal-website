@@ -1,42 +1,31 @@
 import Head from 'next/head'
 import Link from '@material-ui/core/Link';
-import MiniDrawer from './drawer'
 import Footer from './footer'
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
+import ToolbarHeader from './toolbar';
 
 const name = 'Mümtaz Cem Eriş'
-export const siteTitle = 'M. Cem Eriş'
+export const siteTitle = 'Mümtaz Cem Eriş'
 
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     footer: {
       ...theme.typography.body2,
-      // marginTop: theme.spacing(8),
+      marginTop: theme.spacing(8),
       padding: theme.spacing(3, 0),
-    },
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 300,
-    },
-    small: {
-      width: theme.spacing(15),
-      height: theme.spacing(15),
-      alignContent: 'center'
-    },
-    large: {
-      width: theme.spacing(30),
-      height: theme.spacing(30),
-      alignContent: 'center'
     },
     backToHome: {
       margin: theme.spacing(3, 0, 0)
+    },
+    main: {
+      marginTop: theme.spacing(4)
+    },
+    header: {
+      variant: "h2",
+      align: "center",
+      color: theme.palette.primary.light
     },
   }),
 );
@@ -56,7 +45,7 @@ export default function Layout({
         <link rel="icon" href="../favicon.ico" />
         <meta
           name="description"
-          content="Personal website of me created via Next.js"
+          content="My personal website created via Next.js"
         />
         <meta
           property="og:image"
@@ -68,38 +57,22 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
 
       </Head>
-      <MiniDrawer>
-        {home ? (
-          <Grid container direction="column" spacing={1} alignItems="center">
-            <div>
-              <Avatar
-                alt={name}
-                src="../images/profile_big.jpg"
-                className={classes.large}
-                title="Halo"
-              />
-              <Typography gutterBottom variant="h5" component="h2">
-                {name}
-              </Typography>
-            </div>
-          </Grid>
-        ) : (
-            <div></div>
-          )}
 
-        <main>{children}</main>
-        {!home && (
-          <div className={classes.backToHome}>
-            <Link href="../">
-              ← Back to home
+      <ToolbarHeader />
+      <main className={classes.main}>
+        {children}
+      </main>
+      {!home && (
+        <div className={classes.backToHome}>
+          <Link href="../">
+            ← Back to home
             </Link>
-          <Footer otherPages/>
-          </div>
-        )}
-        {home && (
+          <Footer otherPages />
+        </div>
+      )}
+      {home && (
         <Footer />
-        )}
-      </MiniDrawer>
+      )}
     </Container>
   )
 }
