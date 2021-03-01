@@ -14,7 +14,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 const sections = [
     { title: 'LinkedIn', url: 'https://www.linkedin.com/in/mumtazcem', icon: LinkedInIcon },
     { title: 'Mail', url: 'mailto:erismu@itu.edu.tr', icon: MailIcon },
-    { title: 'CV', url: '../images/cv_delivery.png', icon: DescriptionIcon },
+    { title: 'CV', url: './images/cv_delivery.png', icon: DescriptionIcon },
     { title: 'Instagram', url: 'https://www.instagram.com/mumtazcem/', icon: InstagramIcon },
     { title: 'GitHub', url: 'https://github.com/mumtazcem/', icon: GitHubIcon },
 ];

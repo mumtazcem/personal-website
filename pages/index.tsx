@@ -20,7 +20,7 @@ const mainFeaturedPost = {
   title: 'About Me',
   description:
     'As being a both athlete and a computer engineer, I am a self-motivated, hardworking and disciplined person who pursue success and accomplishments. Without fearing a failure, I always stand up against difficulties on the way to achieve my goals and I would continue to do so. Thankfully, I was able to set my goals higher and higher each year, becoming successful both in my career and in ballroom dancing as a national athlete.',
-  image: '../images/dance_img.jpg',
+  image: './images/dance_img.jpg',
   imageText: 'Profile',
   imageTitle: 'Profile'
 };
@@ -31,7 +31,7 @@ const featuredPosts = [
     title: '',
     description:
       'Currently employed as an android app developer, I develop projects to mobile banking application which has more than 6,5 million active users. I have been working at this company for almost two years. I am familiar with huge android applications as well as small applications for startup companies.',
-    image: '../images/android.png',
+    image: './images/android.png',
     imageText: 'Android',
     imageTitle: 'Android'
   },
@@ -40,7 +40,7 @@ const featuredPosts = [
     title: '',
     description:
       'As a matter of fact, I experienced android core libraries like Dagger and concepts such as dependency injection, reflection, component based framework, MVVM, REST API, JSON and have used them extensively. I have experience in server-side development with .NET, Node.js, Next.js and Firebase.',
-    image: '../images/nextjs.png',
+    image: './images/nextjs.png',
     imageText: 'Graduation',
     imageTitle: 'Graduation'
   },
@@ -48,7 +48,7 @@ const featuredPosts = [
     title: '',
     description:
       'Having startup experiences, I am a quick learner and have applied and used many frameworks and technologies such as Next.js, Material UI and Networkx as well. I am currently pursuing higher education, trying to master Computer Networks and IoT at ITU.',
-    image: '../images/profile.jpg',
+    image: './images/profile.jpg',
     imageText: 'Profile',
     imageTitle: 'Profile'
   },
@@ -57,7 +57,7 @@ const featuredPosts = [
     title: '',
     description:
       'My research includes next generation wireless networks and federated learning. My thesis subject was Smart Waste Management and I developed an android application for that. You can check my experiences for more detail and feel free to contact me.',
-    image: '../images/graduation_img.png',
+    image: './images/graduation_img.png',
     imageText: 'Grad',
     imageTitle: 'Grad'
   },
